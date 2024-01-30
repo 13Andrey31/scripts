@@ -1,29 +1,26 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//2 ïðîñòðàíñòâà èì¸í UI è TMpro text
+using UnityEngine.UI;
+using TMPro;
 public class PlayerUi : MonoBehaviour
 {
+    //Ïîëå èãðîâîãî îáúåêòà ñëàéäåð
+    public Slider healthBar;
+    // ïîëå òåêñòà ñ êîëè÷åñòâîì ìîíåò
+    public TMPro.TextMeshProUGUI CoinsCounter;
+    //Ïîëå ñêðèïòà èãðîêà
     public Player player;
-    public TextMeshProUGUI coinsCounterText;
-    public Slider healthSlider;
-
-
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        healthBar.maxValue = player.maxHealth;
+        healthBar.value = player.health;
+        CoinsCounter.text = "coins:" + player.coins;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        healthSlider.maxValue = player.maxHealth;
-        healthSlider.value = player.health;
-
-        coinsCounterText.text = player.coins.ToString();
+        healthBar.value = player.health;
+        CoinsCounter.text = "coins:" + player.coins;
     }
 }
